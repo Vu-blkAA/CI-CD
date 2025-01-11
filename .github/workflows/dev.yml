@@ -24,6 +24,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/
 
+      - name: Clear GitHub Pages cache
+          run: curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/repos/${{ github.repository }}/pages/cache
+
       # - name: Config AWS credentials
       #   uses: aws-actions/configure-aws-credentials@v4
       #   with:
