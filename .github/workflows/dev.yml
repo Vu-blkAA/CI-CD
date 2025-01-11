@@ -5,18 +5,12 @@ on:
   #   branches:
   #     - dev
 
-  workflow_dispatch:
-    branches:
-      - dev
-    inputs:
-      environment:
-        description: 'Environment to deploy'
-        required: true
-        default: 'production'
+  schedule:
+    - cron: '*/5 * * * *'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: seal
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
