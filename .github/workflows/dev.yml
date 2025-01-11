@@ -6,6 +6,8 @@ on:
   #     - dev
 
   workflow_dispatch:
+    branches:
+      - dev
     inputs:
       environment:
         description: 'Environment to deploy'
