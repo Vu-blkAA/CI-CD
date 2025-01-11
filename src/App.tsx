@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Hi i'm Trey
+          Hi i'm Trey, I'm a software engineer. I'm learning how to deploy a react app to AWS S3.
         </a>
       </header>
     </div>
