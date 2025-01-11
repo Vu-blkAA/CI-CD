@@ -18,7 +18,7 @@ function App() {
         >
           Hi i'm Trey, I'm a software engineer. I'm learning how to deploy a react app to AWS S3.
 
-          Something updated
+          Something update
         </a>
       </header>
     </div>
