@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const TREY_LINK = import.meta.env.VITE_HRM_GOOGLE;
+
 function App() {
   return (
     <div className="App">
@@ -12,7 +14,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href={TREY_LINK}
           target="_blank"
           rel="noopener noreferrer"
         >
