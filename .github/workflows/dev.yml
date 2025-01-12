@@ -37,10 +37,13 @@ jobs:
           secret-ids: my-app-secret
 
       - name: Debug environment variable
-        run: echo "HRM_GOOGLE=$HRM_GOOGLE"
+        run: echo "HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE"
 
       - name: Use secrets
-        run: echo "HRM_GOOGLE=$HRM_GOOGLE" >> .env
+        run: echo "HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE" >> .env
+
+      - name: Debug all environment variables
+        run: env
 
       # - name: Fetch parameters from SSM
       #   uses: dkershner6/aws-ssm-getparameters-action@v2
