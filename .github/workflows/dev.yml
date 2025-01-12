@@ -5,7 +5,7 @@ env:
   HRM_GOOGLE_SECRET: hrm-google-secret
 
 on:
-  pull_request:
+  push:
     branches:
       - dev
 
