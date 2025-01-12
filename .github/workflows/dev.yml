@@ -35,7 +35,6 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
           secret-ids: my-app-secret
-          region: ap-southeast-1     # Vùng AWS nơi secret được lưu
 
       - name: Use secrets
         run: |
