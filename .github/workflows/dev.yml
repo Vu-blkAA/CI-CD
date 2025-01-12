@@ -1,8 +1,9 @@
 name: dev-deployment
 
-# env:
-#   HRM_GOOGLE: hrm-google
-#   HRM_GOOGLE_SECRET: hrm-google-secret
+env:
+  # HRM_GOOGLE: hrm-google
+  # HRM_GOOGLE_SECRET: hrm-google-secret
+  ACTION_STEP_DEBUG: true
 
 on:
   push:
