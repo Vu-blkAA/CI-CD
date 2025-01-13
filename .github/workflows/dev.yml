@@ -36,14 +36,14 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v1
         with:
           secret-ids: my-app-secret
-          parse-json-secrets: 'true'
+          region: ap-southeast-1
 
       - name: Debug environment variable
-        run: echo "VITE_HRM_GOOGLE=${MY_APP_SECRET_HRM_GOOGLE}"
+        run: echo "VITE_HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE"
 
       - name: Use secrets
         run: |
-          echo "VITE_HRM_GOOGLE=${MY_APP_SECRET_HRM_GOOGLE}" >> .env
+          echo "VITE_HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE" >> .env
 
       - name: Debug all environment variables
         run: env
