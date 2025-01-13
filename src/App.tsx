@@ -5,6 +5,7 @@ import './App.css';
 const TREY_LINK = import.meta.env.VITE_HRM_GOOGLE;
 
 function App() {
+  console.log('environment', TREY_LINK);
   return (
     <div className="App">
       <header className="App-header">
