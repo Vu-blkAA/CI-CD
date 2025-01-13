@@ -38,10 +38,10 @@ jobs:
           secret-ids: my-app-secret
 
       - name: Debug environment variable
-        run: echo "HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE"
+        run: echo "HRM_GOOGLE=$MY_APP_SECRET"
 
       - name: Use secrets
-        run: echo "HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE" >> .env
+        run: echo "HRM_GOOGLE=$MY_APP_SECRET" >> .env
 
       - name: Debug all environment variables
         run: env
