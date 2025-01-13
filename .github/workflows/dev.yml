@@ -39,10 +39,11 @@ jobs:
           parse-json-secrets: 'true'
 
       - name: Debug environment variable
-        run: echo "VITE_HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE"
+        run: echo "VITE_HRM_GOOGLE=${MY_APP_SECRET_HRM_GOOGLE}"
 
       - name: Use secrets
-        run: echo "VITE_HRM_GOOGLE=$MY_APP_SECRET_HRM_GOOGLE" >> .env
+        run: |
+          echo "VITE_HRM_GOOGLE=${MY_APP_SECRET_HRM_GOOGLE}" >> .env
 
       - name: Debug all environment variables
         run: env
