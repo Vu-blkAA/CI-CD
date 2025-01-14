@@ -1,8 +1,8 @@
 name: dev-deployment
 
 env:
-  VITE_TECH_DOMAIN: https://treynguyen.tech
-
+  VITE_TECH_DOMAIN: /web/hrm/tech-domain
+  
 on:
   push:
     branches:
