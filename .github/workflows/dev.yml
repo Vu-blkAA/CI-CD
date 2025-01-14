@@ -59,10 +59,11 @@ jobs:
       - name: Fetch parameters from SSM
         uses: dkershner6/aws-ssm-getparameters-action@v2
         with:
-          parameterPairs: '${{env.VITE_HRM_GOOGLE}}=VITE_HRM_GOOGLE, hrm-google-secret=VITE_TREY_DOMAIN'
+          parameterPairs: '${{ env.VITE_HRM_GOOGLE }} = VITE_HRM_GOOGLE, hrm-google-secret = VITE_TREY_DOMAIN'
           withDecryption: 'true'
 
       - name: Echo parameters
+        id: fetch-params
         run: |
           echo "VITE_HRM_GOOGLE=$VITE_HRM_GOOGLE" >> .env
           echo "VITE_TREY_DOMAIN=$VITE_TREY_DOMAIN" >> .env
