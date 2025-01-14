@@ -40,4 +40,4 @@ jobs:
         run: echo "VITE_HRM_GOOGLE=$VITE_HRM_GOOGLE" >> .env
 
       - name: Sync files to S3
-        run: aws s3 sync dist/ s3://trey-primary-bucket --delete
+        run: aws s3 sync ./dist s3://trey-primary-bucket --delete
