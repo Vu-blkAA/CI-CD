@@ -1,7 +1,7 @@
 name: dev-deployment
 
 env:
-  VITE_HRM_GOOGLE: /web/hrm/tech-domain
+  VITE_HRM_GOOGLE: ''
 
 on:
   push:
