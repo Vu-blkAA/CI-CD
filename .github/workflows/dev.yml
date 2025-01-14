@@ -1,7 +1,7 @@
 name: dev-deployment
 
 env:
-  VITE_HRM_GOOGLE: hrm-google
+  VITE_HRM_GOOGLE: /web/hrm/tech-domain
 
 on:
   push:
@@ -44,7 +44,6 @@ jobs:
         id: fetch-params
         run: |
           echo "VITE_HRM_GOOGLE=${VITE_HRM_GOOGLE}" >> .env
-          echo "${VITE_HRM_GOOGLE}"
           echo "$VITE_HRM_GOOGLE"
 
       - name: Sync files to S3
