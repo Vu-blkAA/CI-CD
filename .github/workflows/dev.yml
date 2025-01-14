@@ -1,8 +1,8 @@
 name: dev-deployment
 
 env:
-  HRM_GOOGLE: hrm-google
-  HRM_GOOGLE_SECRET: hrm-google-secret
+  VITE_HRM_GOOGLE: hrm-google
+  VITE_TREY_DOMAIN: trey-domain
   # ACTION_STEP_DEBUG: true
   AWS_REGION: ap-southeast-1
 on:
@@ -60,13 +60,13 @@ jobs:
       - name: Fetch parameters from SSM
         uses: dkershner6/aws-ssm-getparameters-action@v2
         with:
-          parameterPairs: '${{ env.HRM_GOOGLE }} = HRM_GOOGLE, ${{ env.HRM_GOOGLE_SECRET }} = HRM_GOOGLE_SECRET'
+          parameterPairs: '${{ env.VITE_HRM_GOOGLE }} = VITE_HRM_GOOGLE, ${{ env.VITE_TREY_DOMAIN }} = VITE_TREY_DOMAIN'
           withDecryption: 'true'
 
       - name: Echo parameters
         run: |
-          echo "VITE_HRM_GOOGLE=$HRM_GOOGLE" >> .env
-          echo "VITE_TREY_DOMAIN=$HRM_GOOGLE_SECRET" >> .env
+          echo "VITE_HRM_GOOGLE=$VITE_HRM_GOOGLE" >> .env
+          echo "VITE_TREY_DOMAIN=$VITE_TREY_DOMAIN" >> .env
 
       - name: Sync files to S3
         run: aws s3 sync dist/ s3://trey-primary-bucket --delete

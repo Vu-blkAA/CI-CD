@@ -7,6 +7,7 @@ const TECH_DOMAIN = import.meta.env.VITE_TREY_DOMAIN;
 function App() {
   console.log('environment', TREY_LINK);
   console.log('tech domain', TECH_DOMAIN);
+  console.log('env', import.meta.env);
 
   return (
     <div className="App">
@@ -21,7 +22,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Hi i'm Trey, I'm a software engineer. I'm learning how to deploy a react app to AWS S3.1
+          Hi i'm Trey, I'm a software engineer. I'm learning how to deploy a react app to AWS S3
         </a>
       </header>
     </div>
