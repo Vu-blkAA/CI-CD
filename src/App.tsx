@@ -2,13 +2,9 @@ import './App.css';
 import logo from './logo.svg';
 
 const TECH_DOMAIN = import.meta.env.VITE_TECH_DOMAIN;
-const HRM_DOMAIN = import.meta.env.VITE_HRM_DOMAIN;
-const HRM_TECH_DOMAIN = import.meta.env.VITE_HRM_TECH_DOMAIN;
 
 function App() {
   console.log('tech domain', TECH_DOMAIN);
-  console.log('hrm domain', HRM_DOMAIN);
-  console.log('hrm tech domain', HRM_TECH_DOMAIN);
   console.log('env', import.meta.env);
 
   return (

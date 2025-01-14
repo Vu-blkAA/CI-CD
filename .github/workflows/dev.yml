@@ -2,8 +2,6 @@ name: dev-deployment
 
 env:
   VITE_HRM_GOOGLE: /web/hrm/tech-domain
-  VITE_HRM_DOMAIN: /hrm/tech-domain
-  VITE_TECH_DOMAIN: tech-domain
 
 on:
   push:
@@ -34,15 +32,13 @@ jobs:
       - name: Fetch secrets
         uses: dkershner6/aws-ssm-getparameters-action@v2
         with:
-          parameterPairs: '/web/hrm/tech-domain=VITE_HRM_GOOGLE,/hrm/tech-domain=VITE_HRM_DOMAIN,/web/hrm/tech-domain=VITE_HRM_TECH_DOMAIN'
+          parameterPairs: '${{ env.VITE_HRM_GOOGLE }}=VITE_HRM_GOOGLE'
           withDecryption: 'true'
 
       - name: Echo parameters
         id: fetch-params
         run: |
           echo "VITE_HRM_GOOGLE=$VITE_HRM_GOOGLE" >> .env
-          echo "VITE_HRM_DOMAIN=$VITE_HRM_DOMAIN" >> .env
-          echo "VITE_HRM_TECH_DOMAIN=$VITE_HRM_TECH_DOMAIN" >> .env
 
       - name: Sync files to S3
         run: aws s3 sync ./dist s3://trey-primary-bucket --delete
