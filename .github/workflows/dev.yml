@@ -1,9 +1,9 @@
 name: dev-deployment
 
 env:
-  # HRM_GOOGLE: hrm-google
-  # HRM_GOOGLE_SECRET: hrm-google-secret
-  ACTION_STEP_DEBUG: true
+  HRM_GOOGLE: hrm-google
+  HRM_GOOGLE_SECRET: hrm-google-secret
+  # ACTION_STEP_DEBUG: true
   AWS_REGION: ap-southeast-1
 on:
   push:
@@ -32,12 +32,12 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-southeast-1
 
-      - name: Store ENV from AWS SecretManager
-        uses: say8425/aws-secrets-manager-actions@v2
-        with:
-          AWS_DEFAULT_REGION: ${{ env.AWS_REGION }}
-          SECRET_NAME: my-app-secret
-          OUTPUT_PATH: '.env'
+      # - name: Store ENV from AWS SecretManager
+      #   uses: say8425/aws-secrets-manager-actions@v2
+      #   with:
+      #     AWS_DEFAULT_REGION: ${{ env.AWS_REGION }}
+      #     SECRET_NAME: my-app-secret
+      #     OUTPUT_PATH: '.env'
 
 
       # - name: Retrieve secrets from AWS Secrets Manager
@@ -54,21 +54,19 @@ jobs:
       #     echo "VITE_HRM_GOOGLE=${VITE_HRM_GOOGLE}" >> .env
       #     cat .env
 
-      - name: Debug all environment variables
-        run: env
+      # - name: Debug all environment variables
+      #   run: env
 
-      # - name: Fetch parameters from SSM
-      #   uses: dkershner6/aws-ssm-getparameters-action@v2
-      #   with:
-      #     parameterPairs: '${{ env.HRM_GOOGLE }} = HRM_GOOGLE, ${{ env.HRM_GOOGLE_SECRET }} = HRM_GOOGLE_SECRET'
-      #     withDecryption: 'true'
+      - name: Fetch parameters from SSM
+        uses: dkershner6/aws-ssm-getparameters-action@v2
+        with:
+          parameterPairs: '${{ env.HRM_GOOGLE }} = HRM_GOOGLE, ${{ env.HRM_GOOGLE_SECRET }} = HRM_GOOGLE_SECRET'
+          withDecryption: 'true'
 
-      # - name: Echo parameters
-      #   run: |
-      #     echo "HRM_GOOGLE=$HRM_GOOGLE" >> .env
-      #     echo "HRM_GOOGLE_SECRET=$HRM_GOOGLE_SECRET" >> .env
-      #     echo "HRM_GOOGLE=$HRM_GOOGLE"
-      #     echo "HRM_GOOGLE_SECRET=$HRM_GOOGLE_SECRET"
+      - name: Echo parameters
+        run: |
+          echo "VITE_HRM_GOOGLE=$HRM_GOOGLE" >> .env
+          echo "VITE_TREY_DOMAIN=$HRM_GOOGLE_SECRET" >> .env
 
       - name: Sync files to S3
         run: aws s3 sync dist/ s3://trey-primary-bucket --delete
