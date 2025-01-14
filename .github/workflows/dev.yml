@@ -35,15 +35,15 @@ jobs:
       - name: Retrieve secrets from AWS Secrets Manager
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
-          secret-ids: my-app-secret
+          secret-ids: vite
           parse-json-secrets: 'true'
 
       - name: Debug environment variable
-        run: echo "VITE_HRM_GOOGLE=${MY_APP_SECRET_HRM_GOOGLE}"
+        run: echo "VITE_HRM_GOOGLE=${VITE_HRM_GOOGLE}"
 
       - name: Write secrets to .env
         run: |
-          echo "VITE_HRM_GOOGLE=${MY_APP_SECRET_HRM_GOOGLE}" >> .env
+          echo "VITE_HRM_GOOGLE=${VITE_HRM_GOOGLE}" >> .env
           cat .env
 
       - name: Debug all environment variables

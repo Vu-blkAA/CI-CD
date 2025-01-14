@@ -3,9 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 const TREY_LINK = import.meta.env.VITE_HRM_GOOGLE;
+const TECH_DOMAIN = import.meta.env.TECH_DOMAIN;
 
 function App() {
   console.log('environment', TREY_LINK);
+  console.log('tech domain', TECH_DOMAIN);
+
   return (
     <div className="App">
       <header className="App-header">
