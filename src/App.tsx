@@ -1,9 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import logo from './logo.svg';
 
 const TREY_LINK = import.meta.env.VITE_HRM_GOOGLE;
-const TECH_DOMAIN = import.meta.env.TECH_DOMAIN;
+const TECH_DOMAIN = import.meta.env.VITE_TREY_DOMAIN;
 
 function App() {
   console.log('environment', TREY_LINK);
