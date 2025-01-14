@@ -1,12 +1,14 @@
 import './App.css';
 import logo from './logo.svg';
 
-const TREY_LINK = import.meta.env.VITE_HRM_GOOGLE;
-const TECH_DOMAIN = import.meta.env.VITE_TREY_DOMAIN;
+const TECH_DOMAIN = import.meta.env.VITE_TECH_DOMAIN;
+const HRM_DOMAIN = import.meta.env.VITE_HRM_DOMAIN;
+const HRM_TECH_DOMAIN = import.meta.env.VITE_HRM_TECH_DOMAIN;
 
 function App() {
-  console.log('environment', TREY_LINK);
   console.log('tech domain', TECH_DOMAIN);
+  console.log('hrm domain', HRM_DOMAIN);
+  console.log('hrm tech domain', HRM_TECH_DOMAIN);
   console.log('env', import.meta.env);
 
   return (
@@ -18,7 +20,7 @@ function App() {
         </p>
         <a
           className="App-link"
-          href={TREY_LINK}
+          href={TECH_DOMAIN}
           target="_blank"
           rel="noopener noreferrer"
         >
