@@ -8,15 +8,11 @@ on:
     branches:
       - dev
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
     environment:
-      name: development
+      name: dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
