@@ -21,12 +21,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
       - name: Config AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -36,14 +30,19 @@ jobs:
       - name: Fetch secrets
         uses: dkershner6/aws-ssm-getparameters-action@v2
         with:
-          parameterPairs: |
-            /web/hrm/tech-domain = VITE_TECH_DOMAIN
+          parameterPairs: '/web/hrm/tech-domain = VITE_TECH_DOMAIN'
           withDecryption: 'true'
 
       - name: Echo parameters
         id: fetch-params
         run: |
           echo "VITE_TECH_DOMAIN=$VITE_TECH_DOMAIN" >> .env
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
 
       - name: Sync files to S3
         run: aws s3 sync ./dist s3://trey-primary-bucket --delete
