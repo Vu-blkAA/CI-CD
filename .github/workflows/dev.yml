@@ -2,15 +2,15 @@ name: dev-deployment
 
 env:
   VITE_TECH_DOMAIN: /web/hrm/tech-domain
-  
+
 on:
   push:
     branches:
       - dev
 
-permissions:
-  id-token: write
-  contents: read
+# permissions:
+#   id-token: write
+#   contents: read
 
 jobs:
   build:
