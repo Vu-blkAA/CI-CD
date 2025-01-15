@@ -36,7 +36,8 @@ jobs:
       - name: Fetch secrets
         uses: dkershner6/aws-ssm-getparameters-action@v2
         with:
-          parameterPairs: '${{ env.VITE_TECH_DOMAIN }}=VITE_TECH_DOMAIN'
+          parameterPairs: |
+            /web/hrm/tech-domain = VITE_TECH_DOMAIN
           withDecryption: 'true'
 
       - name: Echo parameters
