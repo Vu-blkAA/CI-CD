@@ -22,7 +22,7 @@ function App() {
         >
           Hi i'm Trey, I'm a software engineer. I'm learning how to deploy a react app to AWS S3.
         </a>
-        <p>Build Number: 1.2</p>
+        <p>Build Number: 1.3</p>
       </header>
     </div>
   );
