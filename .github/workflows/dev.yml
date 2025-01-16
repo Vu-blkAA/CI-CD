@@ -46,6 +46,7 @@ jobs:
       - name: Use the secret
         run: |
           echo "VITE_TECH_DOMAIN=$MY_APP_SECRET" >> .env
+          echo "My secret: ${{ MY_APP_SECRET }}"
 
       - name: Install dependencies
         run: npm install
