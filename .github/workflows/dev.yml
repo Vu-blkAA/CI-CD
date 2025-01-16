@@ -41,8 +41,7 @@ jobs:
       - name: Get secrets by name and by ARN
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
-          secret-ids: |
-            ,my-app-secret
+          secret-ids: my-app-secret
           parse-json-secrets: 'true',
 
       - name: Use the secret
