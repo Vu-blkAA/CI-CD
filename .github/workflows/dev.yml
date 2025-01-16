@@ -43,7 +43,7 @@ jobs:
         with:
           secret-ids: |
             ,my-app-secret
-          parse-json-secrets: true,
+          parse-json-secrets: 'true',
 
       - name: Use the secret
         run: |
