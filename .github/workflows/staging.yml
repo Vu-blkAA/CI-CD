@@ -1,4 +1,4 @@
-name: stagin-deployement
+name: staging-deployement
 
 env:
   VITE_TECH_DOMAIN: /web/hrm/tech-domain
