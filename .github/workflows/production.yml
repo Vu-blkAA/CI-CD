@@ -1,4 +1,4 @@
-name: stagin-deployement
+name: production-deployement
 
 env:
   VITE_TECH_DOMAIN: /web/hrm/tech-domain
@@ -16,7 +16,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: staging
+    environment: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
