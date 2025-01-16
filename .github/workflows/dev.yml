@@ -41,9 +41,9 @@ jobs:
       - name: Get secrets by name and by ARN
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
-          secret-id: my-app-secret
+          secret-ids: my-app-secret
 
-       - name: Use the secret
+      - name: Use the secret
         run: |
         echo "My secret: ${{ steps.secrets.outputs.SECRET }}"
 
