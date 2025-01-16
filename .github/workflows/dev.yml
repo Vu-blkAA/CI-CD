@@ -45,7 +45,7 @@ jobs:
 
       - name: Use the secret
         run: |
-        echo "My secret: ${{ steps.secrets.outputs.SECRET }}"
+          echo "My secret: ${{ steps.secrets.outputs.SECRET }}"
 
       - name: Install dependencies
         run: npm install
