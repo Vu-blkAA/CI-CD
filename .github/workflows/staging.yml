@@ -1,4 +1,4 @@
-name: dev-deployment
+name: stagin-deployement
 
 env:
   VITE_TECH_DOMAIN: /web/hrm/tech-domain
@@ -7,7 +7,7 @@ env:
 on:
   push:
     branches:
-      - dev
+      - staging
 
 permissions:
   id-token: write
@@ -16,7 +16,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: staging
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
         run: npm run build
 
       - name: Sync files to S3
-        run: aws s3 sync ./dist s3://web-trey-portfolio-dev --delete
+        run: aws s3 sync ./dist s3://web-trey-portfolio-staging --delete
 
       # - name: Invalidate CloudFront cache
       #   uses: chetan/invalidate-cloudfront-action@v2
