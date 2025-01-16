@@ -4,10 +4,10 @@ env:
   VITE_TECH_DOMAIN: /web/hrm/tech-domain
   DISTRIBUTION_ID: EINMS688DC9Z5
 
-on:
-  push:
-    branches:
-      - dev
+# on:
+#   push:
+#     branches:
+#       - dev
 
 permissions:
   id-token: write
