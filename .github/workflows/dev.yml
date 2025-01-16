@@ -42,7 +42,7 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: my-app-secret
-          parse-json-secrets: 'true',
+          parse-json-secrets: 'true'
 
       - name: Use the secret
         run: |
