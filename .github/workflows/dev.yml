@@ -45,6 +45,7 @@ jobs:
 
       - name: Use the secret
         run: |
+          echo "VITE_TECH_DOMAIN=$MY_APP_SECRET" >> .env
           echo "My secret: ${{ steps.secrets.outputs.SECRET }}"
 
       - name: Install dependencies
