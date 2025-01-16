@@ -2,7 +2,7 @@ name: dev-deployment
 
 env:
   VITE_TECH_DOMAIN: /web/hrm/tech-domain
-  # DISTRIBUTION_ID: E1KPI3F9EPTKFJ
+  DISTRIBUTION_ID: EINMS688DC9Z5
 
 on:
   push:
@@ -59,8 +59,8 @@ jobs:
       - name: Sync files to S3
         run: aws s3 sync ./dist s3://web-trey-portfolio-dev --delete
 
-      # - name: Invalidate CloudFront cache
-      #   uses: chetan/invalidate-cloudfront-action@v2
-      #   env:
-      #     DISTRIBUTION: ${{ env.DISTRIBUTION_ID }}
-      #     PATHS: "/*"
+      - name: Invalidate CloudFront cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ env.DISTRIBUTION_ID }}
+          PATHS: "/*"
