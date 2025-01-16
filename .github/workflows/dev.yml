@@ -41,11 +41,11 @@ jobs:
       - name: Get secrets by name and by ARN
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
-          secret-ids: my-app-secret
+          secret-ids: ,my-app-secret
 
       - name: Use the secret
         run: |
-          echo "VITE_TECH_DOMAIN=$MY_APP_SECRET_VITE_HRM_GOOGLE" >> .env
+          echo "VITE_TECH_DOMAIN=$VITE_HRM_GOOGLE" >> .env
           echo "My secret: ${{ steps.secrets.outputs.SECRET }}"
 
       - name: Install dependencies
