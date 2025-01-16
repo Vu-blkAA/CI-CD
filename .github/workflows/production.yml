@@ -57,7 +57,7 @@ jobs:
         run: npm run build
 
       - name: Sync files to S3
-        run: aws s3 sync ./dist s3://web-trey-portfolio-production --delete
+        run: aws s3 sync ./dist s3://web-trey-portfolio-prod --delete
 
       - name: Invalidate CloudFront cache
         uses: chetan/invalidate-cloudfront-action@v2
