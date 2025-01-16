@@ -42,7 +42,7 @@ jobs:
         uses: aws-actions/aws-secretsmanager-get-secrets@v2
         with:
           secret-ids: |
-            VITE_TECH_DOMAIN, /web/hrm/tech-domain
+            VITE_TECH_DOMAIN, VITE_HRM_GOOGLE
 
       - name: Install dependencies
         run: npm install
