@@ -1,0 +1,66 @@
+name: stagin-deployement
+
+env:
+  VITE_TECH_DOMAIN: /web/hrm/tech-domain
+  DISTRIBUTION_ID: E16LHXCGBEWX9M
+
+on:
+  push:
+    branches:
+      - staging
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Config AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::047719645050:role/Github-CICD
+          aws-region: ap-southeast-1
+
+      - name: Fetch secrets
+        uses: dkershner6/aws-ssm-getparameters-action@v2
+        with:
+          parameterPairs: '/web/hrm/tech-domain = VITE_TECH_DOMAIN'
+          withDecryption: 'true'
+
+      - name: Echo parameters
+        id: fetch-params
+        run: |
+          echo "VITE_TECH_DOMAIN=$VITE_TECH_DOMAIN" >> .env
+
+      # - name: Get secrets by name and by ARN
+      #   uses: aws-actions/aws-secretsmanager-get-secrets@v2
+      #   with:
+      #     secret-ids: |
+      #       ,my-app-secret
+      #     parse-json-secrets: 'true'
+
+      # - name: Use the secret
+      #   run: |
+      #     echo "VITE_TECH_DOMAIN=$VITE_HRM_GOOGLE" >> .env
+      #     echo "My secret: $VITE_HRM_GOOGLE"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Sync files to S3
+        run: aws s3 sync ./dist s3://web-trey-portfolio-staging --delete
+
+      - name: Invalidate CloudFront cache
+        uses: chetan/invalidate-cloudfront-action@v2
+        env:
+          DISTRIBUTION: ${{ env.DISTRIBUTION_ID }}
+          PATHS: "/*"
