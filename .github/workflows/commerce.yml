@@ -26,7 +26,8 @@ jobs:
       - name: Validate tag
         id: validate_tag
         run: |
-          TAG_NAME="${{ github.event.inputs.tag }}"
+          TAG_NAME=${{ github.event.inputs.tag }}
+          echo "TAG_NAME: $TAG_NAME"
           if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
             echo "Tag $TAG_NAME exists"
           else
