@@ -41,7 +41,7 @@ jobs:
         if: success()
         run: |
           git checkout ${{github.event.inputs.tag}}
-          echo "Step: ${{ step.event.inputs.tag }}"
+          echo "Step: ${{ steps.event.inputs.tag }}"
           echo "Github: ${{ github.event.inputs.tag }}"
 
       - name: Config AWS credentials
