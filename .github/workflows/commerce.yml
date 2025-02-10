@@ -26,13 +26,13 @@ jobs:
       - name: Validate tag
         id: validate_tag
         run: |
-          TAG_NAME = ${{ github.event.inputs.tag }}
-        if git rev-parse $TAG_NAME >/dev/null 2>&1; then
-          echo "Tag $TAG_NAME exists"
-        else
-          echo "Tag $TAG_NAME does not exist"
-          exit 1
-        fi
+          TAG_NAME="${{ github.event.inputs.tag }}"
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME exists"
+          else
+            echo "Tag $TAG_NAME does not exist"
+            exit 1
+          fi
 
       - name: Checkout specific tag
         if: success()
