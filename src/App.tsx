@@ -19,7 +19,7 @@ function App() {
         >
           Hi i'm Trey, I'm a software engineer. I'm learning how to deploy a react app to AWS S3.
         </a>
-        <p>Tag Number: v1.0.2</p>
+        <p>Tag Number: v1.0.3</p>
       </header>
     </div>
   );
