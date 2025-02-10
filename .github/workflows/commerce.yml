@@ -40,7 +40,9 @@ jobs:
       - name: Checkout specific tag
         if: success()
         run: |
-          git checkout ${{steps.event.inputs.tag}}
+          git checkout ${{github.event.inputs.tag}}
+          echo "Step: ${{ step.event.inputs.tag }}"
+          echo "Github: ${{ github.event.inputs.tag }}"
 
       - name: Config AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
