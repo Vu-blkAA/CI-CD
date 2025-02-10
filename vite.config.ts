@@ -4,6 +4,6 @@ import envCompatible from 'vite-plugin-env-compatible';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/CI-CD',
+    base: '/',
     plugins: [react(), envCompatible()]
 })
