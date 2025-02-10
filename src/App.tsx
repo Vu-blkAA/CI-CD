@@ -4,9 +4,6 @@ import logo from './logo.svg';
 const TECH_DOMAIN = import.meta.env.VITE_TECH_DOMAIN;
 
 function App() {
-  console.log('tech domain', TECH_DOMAIN);
-  console.log('env', import.meta.env);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -22,7 +19,7 @@ function App() {
         >
           Hi i'm Trey, I'm a software engineer. I'm learning how to deploy a react app to AWS S3.
         </a>
-        <p>Build Number: 1.9</p>
+        <p>Tag Number: v1.0.0</p>
       </header>
     </div>
   );
