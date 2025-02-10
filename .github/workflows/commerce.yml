@@ -1,13 +1,15 @@
-name: production-deployment
+name: production-commerce-deployment
 
 env:
   VITE_TECH_DOMAIN: /web/hrm/tech-domain
-  DISTRIBUTION_ID: E3NRG3SEU414N6
+  DISTRIBUTION_ID: E2948RC99S4P3Y
 
 on:
-  push:
-    branches:
-      - production
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        default: 'v1.0.1'
 
 permissions:
   id-token: write
@@ -16,10 +18,26 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: production
+    environment: production-commerce
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Validate tag
+        id: validate_tag
+        run: |
+        TAG_NAME = ${{github.event.inputs.tag}}
+        if git rev-parse $TAG_NAME >/dev/null 2>&1; then
+          echo "Tag $TAG_NAME exists"
+        else
+          echo "Tag $TAG_NAME does not exist"
+          exit 1
+        fi
+
+      - name: Checkout specific tag
+        if: success()
+        run: |
+          git checkout ${{steps.event.inputs.tag}}
 
       - name: Config AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
